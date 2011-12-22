@@ -8,13 +8,32 @@
 
   <name>Maven Fluid Skin</name>
   <description>A Maven2 site skin, based on the Zurb Foundation fluid design CSS framework.</description>
-  <inceptionYear>2011</inceptionYear>
+  <inceptionYear>2008</inceptionYear>
+
+  <organization>
+    <name>studiomediatech.com</name>
+    <url>http://studiomediatech.com/</url>
+  </organization>
 
   <parent>
     <groupId>org.sonatype.oss</groupId>
     <artifactId>oss-parent</artifactId>
     <version>7</version>
   </parent>
+
+  <developers>
+    <developer>
+      <id>olle</id>
+      <name>Olle Törnström</name>
+      <url>http://www.studiomediatech.com</url>
+    </developer>
+  </developers>
+
+  <properties>
+    <!-- PLUGINS -->
+    <maven-minify-plugin.version>1.3.5</maven-minify-plugin.version>
+    <maven-changes-plugin.version>2.3</maven-changes-plugin.version>
+  </properties>
 
   <build>
     <resources>
@@ -37,8 +56,14 @@
       </resource>
 
       <!-- TODO: Include a print.css explicitly. -->
+      <resource>
+        <directory>${basedir}/src/main/resources</directory>
+        <includes>
+          <include>css/ie.css</include>
+        </includes>
+      </resource>
 
-      <!-- Include minified css/js resources. -->
+      <!-- Include generated/minified css/js resources. -->
       <resource>
         <directory>${project.build.directory}/${project.build.finalName}</directory>
         <includes>
@@ -52,7 +77,7 @@
       <plugin>
         <groupId>com.samaxes.maven</groupId>
         <artifactId>maven-minify-plugin</artifactId>
-        <version>1.3.5</version>
+        <version>${maven-minify-plugin.version}</version>
         <executions>
           <execution>
             <id>default-minify</id>
@@ -62,16 +87,15 @@
               <cssSourceDir>css</cssSourceDir>
               <cssSourceFiles>
                 <!-- TODO: Add all css files! -->
-                <cssSourceFile>app.css</cssSourceFile>
                 <cssSourceFile>foundation.css</cssSourceFile>
-                <cssSourceFile>ie.css</cssSourceFile>
+                <cssSourceFile>app.css</cssSourceFile>
               </cssSourceFiles>
               <cssFinalFile>${project.artifactId}.css</cssFinalFile>
               <jsSourceDir>js</jsSourceDir>
               <jsSourceFiles>
                 <!-- TODO: Add all js files! -->
-                <jsSourceFile>app.js</jsSourceFile>
                 <jsSourceFile>foundation.js</jsSourceFile>
+                <jsSourceFile>app.js</jsSourceFile>
               </jsSourceFiles>
               <jsFinalFile>${project.artifactId}.js</jsFinalFile>
             </configuration>
@@ -82,8 +106,27 @@
         </executions>
       </plugin>
     </plugins>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-changes-plugin</artifactId>
+          <version>${maven-changes-plugin.version}</version>
+        </plugin>
+      </plugins>
+    </pluginManagement>
   </build>
 
   <!-- TODO: Add integration test profile. -->
+
+  <reporting>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-changes-plugin</artifactId>
+        <version>${maven-changes-plugin.version}</version>
+      </plugin>
+    </plugins>
+  </reporting>
 
 </project>
