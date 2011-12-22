@@ -1,3 +1,29 @@
 ${project.name}
 
- ${project.description}
+ A modern HTML5/CSS3 skin for Maven project site generation, based on the
+ {{{http://foundation.zurb.com}Foundation}} fluid layout framework. This skin
+ allows for proper rendering on desktop computers, tablets and on mobile 
+ devices.
+ 
+ <<Your Maven project documentation never looked so good, with so little 
+ effort.>>
+ 
+* Getting started
+
+ Add the following skin configuration to your <<<site.xml>>> definition and 
+ you're ready to go.
+ 
++---
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+  <skin>
+    <groupId>com.studiomediatech</groupId>
+    <artifactId>maven-fluid-skin</artifactId>
+    <version>${project.version}</version>
+  </skin>
+  <body>
+    ...
+  </body>
+</project>
++---
+  
