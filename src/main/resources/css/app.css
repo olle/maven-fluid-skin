@@ -5,3 +5,27 @@ header {
 	margin-bottom: 1.5em;
 	text-transform: uppercase;
 }
+
+table {
+	width: 100%;
+}
+
+table tbody tr {
+	background-color: #f9f9f9;
+}
+
+table tbody tr:nth-child(2n) {
+	background-color: #fff;
+}
+
+table tr td {
+	padding: 5px 8px;
+}
+
+table tr th {
+	font-weight: bold;
+	color: #333;
+	padding: 5px 8px;
+	background: #eee;
+	text-align: left;
+}

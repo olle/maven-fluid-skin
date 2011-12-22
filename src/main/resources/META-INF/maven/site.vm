@@ -18,11 +18,20 @@
 ##
 #macro (menu $menus)
   #foreach ($menu in $menus)
-    <strong>$menu.name</strong>
+    <strong class="hide-on-phones">$menu.name</strong>
     <dl class="nice tabs vertical hide-on-phones">
       #menuItems($menu)
     </dl>
   #end
+#end
+##
+#macro (mobileMenu $menus)
+  <a name="menu">&nbsp;</a>
+  <dl class="nice tabs mobile">
+  #foreach ($menu in $menus)
+    #menuItems($menu)
+  #end
+  </dl>
 #end
 ##
 #macro (menuItems $menu)
@@ -98,9 +107,10 @@
   <![endif]-->
 </head>
 <body>
-  <header class="container">
+  <header class="container hide-on-phones">
+    <h1 style="display: none;">$project.name</h1>
     <div class="row">
-      <div class="twelve columns hide-on-phones">
+      <div class="twelve columns">
         #published($decoration.publishDate)
         #version()
       </div>
@@ -115,10 +125,15 @@
         $bodyContent
       </div>
     </div>
+    <div class="row show-on-phones">
+      <div class="twelve columns">
+        #mobileMenu($decoration.body.menus)
+      </div>    
+    </div>
   </div>
   <footer class="container">
     <div class="row">
-      <div class="twelve columns">
+      <div class="nine columns offset-by-three">
         #copyright()
       </div>
     </div>
