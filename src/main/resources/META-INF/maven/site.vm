@@ -38,18 +38,27 @@
   #foreach ($item in $menu.items)
     #set ($currentItemHref = $PathTool.calculateLink($item.href, $relativePath))
     #set ($currentItemHref = $currentItemHref.replaceAll('\\', '/' ))
-<dd>#topLink($currentItemHref $item.name $item.target)</dd>
+    #if ($alignedFileName == $currentItemHref)
+      #set ($active = true)
+    #else
+      #set ($active = false)
+    #end
+<dd>#topLink($currentItemHref $item.name $item.target $active)</dd>
   #end
 #end
 ##
-#macro (topLink $href $name $target)
+#macro (topLink $href $name $target $active)
   #set ($linkTitle = ' title="' + $name + '"')
   #if ($target)
     #set ($linkTarget = ' target="' + $target + '"')
   #else
     #set ($linkTarget = "")
   #end
-<a href="$href" $linkTarget title="$name">$name</a>
+  #if ($active)
+<a href="$href" $linkTarget title="$name" class="active">$name</a>
+  #else
+<a href="$href" $linkTarget title="$name" $class>$name</a>
+  #end
 #end
 ##
 #macro (copyright)
@@ -63,11 +72,11 @@
     #else
       #set ($copyrightYear = $year)
     #end
-    #if ("${project.organization}" != "" && "${project.organization.name}" != "")
-      #if ("${project.organization.url}" != "")
+    #if (${project.organization})
+      #if ("${project.organization.url}" != "" && "${project.organization.name}" != "")
         #set ($href = 'href="' + $project.organization.url + '"')
         #set ($copyrightText = "$copyrightText <a $href>$project.organization.name</a>")
-      #else
+      #elseif ("${project.organization.name}" != "")
         #set ($copyrightText = "$copyrightText $project.organization.name")
       #end
     #end
@@ -97,7 +106,7 @@
 #end
   <title>$title</title>
   <!-- Included CSS Files -->
-  <link rel="stylesheet" href="$relativePath/css/${project.artifactId}.min.css">
+  <link rel="stylesheet" href="$relativePath/css/maven-fluid-skin.min.css">
   <!--[if lt IE 9]>
     <link rel="stylesheet" href="$relativePath/css/ie.css">
   <![endif]-->
@@ -108,9 +117,9 @@
 </head>
 <body>
   <header class="container hide-on-phones">
-    <h1 style="display: none;">$project.name</h1>
     <div class="row">
-      <div class="twelve columns">
+      <h1 class="four columns">$project.name</h1>
+      <div class="eight columns release-info">
         #published($decoration.publishDate)
         #version()
       </div>
@@ -133,11 +142,11 @@
   </div>
   <footer class="container">
     <div class="row">
-      <div class="nine columns offset-by-three">
+      <div class="twelve columns footer-info">
         #copyright()
       </div>
     </div>
   </footer>
-  <script src="$relativePath/js/${project.artifactId}.min.js"></script>
+  <script src="$relativePath/js/maven-fluid-skin.min.js"></script>
 </body>
 </html>

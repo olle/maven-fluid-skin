@@ -1,8 +1,8 @@
 ${project.name}
 
- A modern HTML5/CSS3 skin for Maven project site generation, based on the
- {{{http://foundation.zurb.com}Foundation}} fluid layout framework. This skin
- allows for proper rendering on desktop computers, tablets and on mobile 
+ Finally! A modern HTML5/CSS3 skin for Maven project site generation, based on
+ the {{{http://foundation.zurb.com}Foundation}} fluid layout framework. This
+ skin allows for proper rendering on desktop computers, tablets and on mobile
  devices.
  
  <<Your Maven project documentation never looked so good, with so little 
@@ -26,4 +26,13 @@ ${project.name}
   </body>
 </project>
 +---
-  
+ 
+* Getting paid
+
+ Well you know, it is all about getting the most out of your documentation. It
+ is all about making it available - and with this skin you automatically get
+ your information formatted for all types of devices.
+
+ You can even try out your documentation layout by simply resizing your browser
+ window. This helps you determine what to document and how it will be made
+ available to readers in different formats.
