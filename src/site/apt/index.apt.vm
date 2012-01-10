@@ -23,6 +23,7 @@ ${project.name}
   </skin>
   <body>
     ...
+    <!-- Psst! Check out how the source code block scales and allows to scroll horizontally. This preserves code formatting in verbatim blocks. Yay! -->
   </body>
 </project>
 +---

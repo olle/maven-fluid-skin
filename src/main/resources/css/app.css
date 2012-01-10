@@ -55,10 +55,16 @@ table tr th {
     border-left: 1em solid #ddd;
     padding: 1em;
     margin-bottom: 1em;
+    overflow-x: scroll;
 }
 
 tt {
     font-family: Monaco, Courier, monospace;
+    font-size: 90%;
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 2px;
+    padding: .1em .3em;
 }
 
 /**
@@ -66,10 +72,10 @@ tt {
 @media only screen and (max-width: 767px) {
     .source {
 	color: #000;
-	font-size: 67%;
-	padding: 0;
-	background: none;
-	border: none;
+	font-size: 70%;
+	border: 1px solid #ddd;
+	padding: .5em .3em;
+	overflow-x: scroll;
     }
     footer .footer-info {
 	text-align: left;
